@@ -1,0 +1,200 @@
+<html><head><style>
+span{
+    color:#c00;
+    font-size:15px;
+}label{
+    font-size:15px;
+    color:black;
+}
+section{
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.5);
+    padding:20px;
+}
+</style>
+    </head><body><form action="" method="dialog" id="div1" style="display:block;">
+       <iscomment> Shipping </iscomment>
+        <section>
+            <fieldset>
+                        <div class="card-title"><h4 class="ship">${"Shipping"}</h4></div>
+                        <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                   <label for="fame"><span>${"*"}</span>${"First name"}</label>
+                                   <input type="text" class="form-control" id="fname" name="firstname" required="">
+                                    <iscomment> <label for="fame" id="fname" style="color:red; font-size:13px;">${" Enter Your Name"}</label> </iscomment>
+                                </div>
+                                <div class="col-md-6">
+                                <label for="lame"><span>${"*"}</span>${"Last name"}</label>
+                                <input type="text" class="form-control" id="lname" name="lastname" required="">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-8">
+                                <label for="Add1"><span>${"*"}</span>${"Street Address1"}</label>
+                                <input type="text" class="form-control" id="shipadd1" name="add1" required="">
+                                </div>
+                                <div class="col-md-4">
+                                <label for="Add2">${"Street Address2"}</label>
+                                <input type="text" class="form-control" id="shipadd2" name="add2">
+                                </div>
+                             </div>
+                             <br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                <label for="city"><span>${"*"}</span>${"City"}</label>
+                                <input type="text" class="form-control" id="city" name="city" required="">
+                                </div>
+                                <div class="col-md-2">
+                                <label for="state"><span>${"*"}</span>${"State"}</label>
+                                    <div class="form-group">
+                                        <select class="form-control" id="sel1" required="">
+                                            <option>${"NY"}</option>
+                                            <option>${"RJ"}</option>
+                                            <option>${"MP"}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                <label for="zip"><span>${"*"}</span>${"Zip Code"}</label>
+                                <input type="text" class="form-control" id="zip" pattern="(^[\d]*$)" name="zip" required="">
+                                </div>
+                                <div class="col-md-4">
+                                <label for="country"><span>${"*"}</span>${"Country"}</label>
+                                 <div class="form-group">
+                                        <select class="form-control" id="sel1" required="">
+                                            <option>${"United States"}</option>
+                                            <option>${"2"}</option>
+                                            <option>${"3"}</option>
+                                            <option>${"4"}</option>
+                                        </select>
+                                    </div> </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                <label for="uname"><span>${"*"}</span>${"Email Address"}</label>
+                                      <input type="email" class="form-control" id="email" placeholder="" name="email1" pattern="^(([-\w\d]+)(\.[-\w\d]+)*@([-\w\d]+)(\.[-\w\d]+)*(\.([a-zA-Z]{2,5}|[\d]{1,3})){1,2})$" title="Your email address" required="">
+                                </div>
+                                <div class="col-md-6">
+                                <label for="uname"><span>${"*"}</span>${"Phone Number"}</label>
+                                <input type="text" class="form-control" pattern="[0-9]{10}" id="phone" name="phone1" required="">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                <label for="uname">${"Select Shipping for Billing"}</label>
+                                    <div class="form-group">
+                                        <select class="form-control" id="sel1" required="">
+                                            <option>${"Ground (5 to 7 Days)"}</option>
+                                            <option>${"2"}</option>
+                                            <option>${"3"}</option>
+                                            <option>${"4"}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </br>
+                                 <button type="sumit" class="btn btn-primary" style="border-radius:100px 100px 100px 100px; color:white; background-color:#184A8F; border:hidden;">${"CONTINUE"}</button>
+                            </div>
+                      </div>
+                           
+            </fieldset>
+         </section>
+    </form>
+        <div class="col-md-12" id="div2" style="display:none;">
+                <div class="col-md-12" style="box-shadow: 0px 3px 5px rgba(0,0,0,0.5); padding:20px;">
+                    <div class="row">
+                        <div class="col-md-10">
+                         <h4 class="ship">${"Shipping"}</h4>
+                        </div>
+                        <div class="col-md-2">
+                          <a href="#" onclick="replace(0)">${"Edit"}</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <dl>
+                            <dt>${"Shipping Address:"}</dt>
+                            <dd id="cfname"></dd>
+                            <dd id="cshipadd1"></dd>
+                            <dd id="cshipadd2"></dd>
+                            <dd id="cphone"></dd>
+                    </dl>
+            </div>
+            <br>
+            <div class="col-md-12" style="box-shadow: 0px 3px 5px rgba(0,0,0,0.5); padding:20px;">
+                    <div class="row">
+                        <div class="col-md-10">
+                         <h4 class="ship">${"Payment"}</h4>
+                       </div>
+                        <div class="col-md-2">
+                          <a href="#" onclick="replace(0)">Edit</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <dl>
+                            <dt>${"Billing Address:"}</dt>
+                            <dd id="billingAddress"></dd>
+                            <dd></dd>
+                            <dd id="billingphone"></dd>
+                            <dd id="cemail"></dd>
+                            <dt>${"Payment:"}</dt>
+                            <dd id="ccard"></dd>
+                            <dd id="cExp"></dd>
+                    </dl>
+            </div>
+            <br>
+             <div class="col-md-12">
+                <button type="" class="btn btn-primary" style="box-shadow: 0px 3px 5px rgba(0,0,0,0.5); width:100%; border-radius: 100px 100px 100px 100px; color:white; background-color:#184A8F; border:hidden;">${"Place Order"}</button>
+            </div>
+        </div>
+<iscomment> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> </iscomment>
+<script>
+function replace(bool){
+    var t=all();
+    if(bool && t){
+        document.getElementById('div1').style.display='none';
+        document.getElementById('div2').style.display='block';
+
+        document.getElementById('cfname').innerHTML=document.getElementById('fname').value+' '+document.getElementById('lname').value;
+        document.getElementById('cshipadd1').innerHTML=document.getElementById('shipadd1').value;
+        document.getElementById('cshipadd2').innerHTML=document.getElementById('shipadd2').value;
+        document.getElementById('cphone').innerHTML=document.getElementById('phone').value;
+
+        document.getElementById('billingAddress').innerHTML=document.getElementById('shipadd1').value;
+        document.getElementById('billingphone').innerHTML=document.getElementById('phone').value;
+        document.getElementById('cemail').innerHTML=document.getElementById('email').value;
+
+        document.getElementById('ccard').innerHTML="************"+document.getElementById('card').value.slice(12);
+        var e = document.getElementById("exp1");
+        var result = e.options[e.selectedIndex].value;
+        e= document.getElementById("exp2");
+        var result2 = e.options[e.selectedIndex].value;
+        document.getElementById('cExp').innerHTML=result+'/'+result2;
+    }else{
+        document.getElementById('div1').style.display='block';
+        document.getElementById('div2').style.display='none';
+    }
+}
+/*$('#butsave').on('click', function () {
+            // $('#div1').load('script/OrderPost.js', function() {
+            alert('Load was performed.');
+            // });
+});
+$(document).ready(function () {
+    $('#butsave').on('click', function () {
+        alert('hii');
+    });
+});*/
+
+function all(){
+    var arr=document.querySelectorAll('input');
+    for(var i=0;i<arr.length;i++){
+            if(arr[i].value == "" && i != 3){
+                return false;
+            }
+    }
+    return true;
+}
+</script></body></html>

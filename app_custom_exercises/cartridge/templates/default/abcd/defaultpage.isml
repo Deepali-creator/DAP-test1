@@ -1,0 +1,43 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <link rel="stylesheet"  href="${URLUtils.staticURL('css/style.css')}">
+  <style>
+  /* .checkoutContentCenter {
+    margin: 3% 19% 10% 17%;
+    overflow: auto; 
+    padding-bottom: 12%;
+     padding-right:20%;  
+} */
+
+  </style>
+   <div class="container-fluid">
+            <isinclude template="abcd/navbar"/>
+            <br/>
+    <div class="container">
+    <div class="checkoutContentCenter">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="color:#184A8F;">${"Checkout"}</h1>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-7">
+                   <div class="card-group">
+                            <isinclude template="abcd/form" sf-toolkit="on" />
+                    </div>
+            </div>
+            <div class="col-md-5">
+                   <div class="card">
+                        <div class="card-body">
+                             <isinclude template="abcd/orderdetails" sf-toolkit="on" />
+                        </div>
+                   </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <hr/>
+         <isinclude template="abcd/footer"/>
+   </div

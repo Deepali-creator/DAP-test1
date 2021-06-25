@@ -1,0 +1,305 @@
+<html>
+<head>
+
+<title>My Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="${URLUtils.staticURL('/css/style.css')}">
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="${URLUtils.staticURL('default/js/omdb1.js')}"></script>
+  
+</head>
+
+<style>
+form.SearchBar input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #616161;
+  }
+  
+  .image {
+      overflow: hidden;
+      transition-duration: 0.8s;
+      filter: grayscale(100%);
+      transition-property: transform;
+  }
+  .image:hover {
+      filter: grayscale(0%);
+      -moz-transform: scale(1.5) rotate(360deg);
+      -webkit-transform: scale(1.5) rotate(360deg);
+      -o-transform: scale(1.5) rotate(360deg);
+      -ms-transform: scale(1.5) rotate(360deg);
+      transform: scale(1.5) rotate(360deg);
+  }
+
+  /* .largeFont:hover{
+      font-size: 50px;
+  } */
+  
+ 
+  form.SearchBar button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #343a40;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; 
+    cursor: pointer;
+  }
+  
+  form.SearchBar button:hover {
+    background: #616161;
+  }
+  
+  .showData{
+      visibility:hidden;
+      margin-left:20px;
+      border:5px;
+  }
+
+  form.SearchBar::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .highlightData:hover{
+
+      color: yellow;
+      font-size: 30px;
+      text-align: center;
+
+  }
+  .showData:hover
+  {
+       background-color: black;
+
+  }
+
+  .headerDiv{
+
+      background-color: #728FCE;
+      margin-bottom: 5%;
+      padding-bottom: 10%;
+      text-align: center;
+  }
+
+  .headerDivText{
+      font-size: 20px;
+      margin-bottom: 1%;
+  }
+
+  .showText{
+      margin-top: 5%:
+  }
+  
+
+  .tableDiv{
+      visibility: hidden;
+  }
+
+</style>
+<body>
+<div class = "headerDiv">
+<div class="headerDivText">IMDB Movie Search PLatform<div>
+</div>
+<div class="content colo1 ">
+    <div class="container">
+        <div class="input-group">
+           <input type="text" id="searchText" name="" class="form-control searchText" value="">
+            <div class="input-group-append">
+                <button type="button" id="SearchButton" onclick="buttonClick()" class="btn waves-effect waves-light btn-custom"><i class="fa fa-search mr-1"></i> Search</button>
+            </div>
+        </div>  
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="container" id = "tableDiv">
+                    <table class="table table-bordered table-striped " id="table">
+        <thead>
+            <tr>
+                <th scope="col">Poster</th>
+                <th scope="col">Title</th>
+                <th scope="col">Year</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+            <div class="container"><b>Movie Information</b>
+                            <div class="showData" id = "showData">
+                               <span class="highlightData" id="Title2"></span></br>
+                                 <span class="highlightData" id="Year2"></span></br>
+                                 <span class="highlightData" id="Type2"></span>
+                            </div>
+                        </div>
+        </div>
+        </div>
+</div>
+</div>
+        <script>
+            
+
+           var finalList = [];
+           function buttonClick () 
+           {
+             var rowCount = table.rows.length;
+            for (var i = rowCount - 1; i > 0; i--) {
+                table.deleteRow(i);
+            }
+            var search = document.getElementById("searchText").value;
+            const xhRequest = new XMLHttpRequest();
+            var str ="https://www.omdbapi.com/?i=tt3896198&apikey=567440b2&s="+search;
+            let ur=new URL(str);
+            
+           
+
+            xhRequest.open("GET", ur , true);
+            // xhr.setRequestHeader('Accept', 'application/json');
+           // alert(ur);
+            xhRequest.send();
+            
+            xhRequest.onload = function () {
+
+                if (this.status === 200) {
+                    
+                    obj = JSON.parse(this.responseText);
+                  
+                       var createTable = [];
+                       var movieList = {};
+                       movieList = JSON.stringify(obj.Search, undefined, 4);
+
+                      // document.getElementById("quine").innerHTML = movieList;
+                      // var movieList2 =  document.getElementById("quine").innerHTML;
+                      
+
+                    //   for(var i in movieList2)
+                    //   {
+                    //       document.getElementById("quine").innerHTML = movieList2;
+                    //   }
+
+                       
+                        var tableHead = ["Poster", "Tilte", "Year", "Type"];
+                        createTable.push(tableHead);
+
+                        $.each(obj.Search, function(index, value) {
+                        var innerRowData = [];
+                        $("tbody").append('<tr id="movieDetails"><td class="image"><img src=' + value.Poster + '</img></td><td onclick="showData()" id="Title1">' + value.Title + '</td><td id ="Year1">' + value.Year + '</td><td id="Type1">' + value.Type + '</td></tr>');
+                       
+                        $.each(value, function(ind, val) {
+
+                        innerRowData.push(val);
+                    });
+                   //  $("#showData").append('<span>'+ value.Genere +'</span>');
+                  createTable.push(innerRowData);
+                //   $("#table").dataTable({
+                //   "iDisplayLength": 2,
+                //   "aLengthMenu": [[10, 25, 50, 100,  -1], [10, 25, 50, 100, "All"]]
+                //  });
+
+            });
+
+ 
+                }
+                else
+                 {
+                   alert("not found !!");
+                 }
+            };
+
+
+                xhRequest.onerror = function() {
+                console.log(`Network Error`);
+                };
+
+
+            
+            };
+
+            
+            function clearContent(elementID)
+            {
+                document.getElementById(elementID).innerHTML = "";
+            }
+
+            
+
+            function showData()
+            {
+               
+               if(document.getElementById('Title1').innerHTML=='')
+               {
+                   document.getElementById('Title2').innerHTML = '""';
+               }
+               else
+               {
+                   document.getElementById('Title2').innerHTML = document.getElementById('Title1').innerHTML;
+               }
+
+                if(document.getElementById('Year1').innerHTML=='')
+               {
+                   document.getElementById('Year2').innerHTML = '""';
+               }
+               else
+               {
+                   document.getElementById('Year2').innerHTML = document.getElementById('Year1').innerHTML;
+               }
+                if(document.getElementById('Type1').innerHTML=='')
+               {
+                   document.getElementById('Type2').innerHTML = '""';
+               }
+               else
+               {
+                   document.getElementById('Type2').innerHTML = document.getElementById('Type1').innerHTML;
+               }
+                
+                var div = document.getElementById('showData');
+                
+                div.style.visibility = 'visible';
+
+            }
+
+
+              
+
+        
+        </script>
+            
+    
+   
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <style>
+            .container1{
+                background-image: linear-gradient(to right , #1E4A89  , #01AAC7);
+                border-radius:0px 0px 100px 0px ;
+                padding:20px;
+            }
+            .nav{
+                    list-style-type:none;
+                    display:inline;
+                    color:white;
+                    padding:10px;
+            }
+           .icon{
+                font-size:30px;
+            }
+            .Logo{
+                font-size:40px;
+                font-weight:bold;
+                margin-top:5px;
+                font-family: arial;
+             }
+            h1{
+                    list-style-type:none;
+                    display:inline;
+                    padding:10px;
+            }
+            .btn1{
+                border-radius:100px 100px 100px 100px;
+                background-color:White;
+                color:#01AAC7;
+                border:hidden;
+            }
+        </style>
+     <div class="container-fluid">
+        <div class="container1">
+            <div class="row">
+                    <div class="col-md-2">
+                        <center><h1 style="color:white;">${"OSCILL8"}<span style="font-size:10px; color:#FFFFFF;"><sub>${"TM"}</sub></span></h1></center>
+                    </div>
+                    <div class="col-md-6">
+                        <ul style="margin-top:10px;">
+                            <!--<li><h1 class="Logo">OSCILL8</h1></li>-->
+                            <li class="nav">${"SHOP"}</li>
+                            <li class="nav">${"ACCESSORIES"}</li>
+                            <li class="nav">${"SUPPORT"}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul>
+                            <li class="nav"><icon class="icon fa fa-shopping-cart"> <sup><span class="badge badge-light" style="border-radius:100px 100px 100px 100px;position:absolute; color:#01AAC7; font-size:14px;">${(pdict.order.shipping.length)+" "}</span></sup> </icon></li>
+                            <li class="nav"><button type="button" class="btn1 btn btn-success">${"LOG IN"}</button></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<form>
+    <field formid="serachText" label="label.input.serachText" type="string"  max-length="50"/>
+	<action formid="omdb" valid-form="true"/>
+</form>

@@ -1,0 +1,65 @@
+<html><head>
+</head>
+<body>
+<div class="container cart cart-page">
+    <div class="row">
+            <h3 style="color:#1E4A89 ;">${(pdict.order.shipping.length)+ " items"}</h3>
+    </div>
+    <hr>
+    <iscomment> All Product  </iscomment>
+      <div class="container" style="overflow-y:auto;overflow-x:hidden; height:308px;">
+            <isloop items="${pdict.order.shipping}" var="productLineItem">
+               <div class="row">
+               <isloop items="${productLineItem.productLineItems.items}" var="lineItem">
+                            <div class="col-md-8">
+                                <h5>${lineItem.productName}</h5>
+                                <h6>${((lineItem.quantity).toString()).slice(0,10)+ ((productLineItem.productLineItems.items[0].quantity).toString()).slice(16,17)} </h6>
+                            </div>
+                            <div class="col-md-4" style="font-size:15px;"><b>${lineItem.price[0].listPrice}</b></div>
+                            </isloop>
+               </div>
+               <hr>
+            </isloop>
+      </div>
+    <hr>
+    <iscomment> Total Ammount </iscomment>
+      <div class="container">
+             <div class="row">
+                <div class="col-md-12 totals">
+                    <iscomment> <isinclude template="cart/cartTotals"> </isinclude></iscomment>
+                   <iscomment> Shipping Cost </iscomment>
+                    <div class="row">
+                        <div class="col-8">
+                            <p>${Resource.msg('label.shipping.cost','cart',null)}</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="text-right shipping-cost">${pdict.order.totals.totalShippingCost}</p>
+                        </div>
+                    </div>
+                    <iscomment> Shipping  </iscomment>
+                    <iscomment> Sales Tax </iscomment>
+                        <div class="row">
+                            <div class="col-8">
+                                <p>${Resource.msg('label.sales.tax','cart',null)}</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="text-right tax-total">${pdict.order.totals.totalTax}</p>
+                            </div>
+                        </div>
+                    <iscomment> Sales Tax </iscomment>
+
+                    <iscomment>estimatedtotal</iscomment>
+                    <div class="row">
+                        <div class="col-8">
+                            <strong>${Resource.msg('label.estimatedtotal','cart',null)}</strong>
+                        </div>
+                        <div class="col-4">
+                            <p class="text-right grand-total">${pdict.order.totals.subTotal}</p>
+                        </div>
+                    </div>
+                    <iscomment>estimatedtotal</iscomment>
+                </div>
+            </div>
+     </div>
+</div>
+</body></html>
